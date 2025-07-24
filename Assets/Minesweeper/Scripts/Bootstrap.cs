@@ -9,7 +9,7 @@ namespace Minesweeper {
 
         private void Awake()
         {
-            bool[,] mines = MineGenerator.Generate(size, size, mineCount);
+            bool[,] mines = MineGenerator.Generate(size, mineCount);
 
             
         }

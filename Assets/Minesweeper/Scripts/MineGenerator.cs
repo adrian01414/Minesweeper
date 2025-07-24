@@ -4,23 +4,23 @@ namespace Minesweeper
 {
     public static class MineGenerator
     {
-        public static bool[,] Generate(int gridSizeX, int gridSizeY, int minesCount)
+        public static bool[,] Generate(int gridSize, int minesCount)
         {
             if (minesCount <= 0)
             {
                 throw new System.ArgumentOutOfRangeException("MineCount can not be less or equal than zero");
             }
-            else if (minesCount >= (gridSizeX * gridSizeY))
+            else if (minesCount >= (gridSize * gridSize))
             {
                 throw new System.ArgumentOutOfRangeException("MineCount can not be more or equal than GridSize*GridSize");
             }
 
-            bool[,] mines = new bool[gridSizeX, gridSizeY];
+            bool[,] mines = new bool[gridSize, gridSize];
 
             int iter = minesCount;
-            for(int i = 0; i < gridSizeY; i++)
+            for(int i = 0; i < gridSize; i++)
             {
-                for (int j = 0; j < gridSizeX; j++)
+                for (int j = 0; j < gridSize; j++)
                 {
                     mines[i, j] = iter > 0 ? true : false;
                     iter--;
@@ -28,8 +28,8 @@ namespace Minesweeper
             }
 
             Random rng = new Random();
-            int rows = gridSizeX;
-            int cols = gridSizeY;
+            int rows = gridSize;
+            int cols = gridSize;
 
             for (int i = rows * cols - 1; i > 0; i--)
             {
