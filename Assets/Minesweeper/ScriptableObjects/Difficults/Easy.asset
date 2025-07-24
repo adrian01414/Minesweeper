@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba136a606b3cb874dbe773c735660222, type: 3}
   m_Name: Easy
   m_EditorClassIdentifier: 
-  _gridSize: 0
+  <GridSize>k__BackingField: 10

@@ -1,5 +1,4 @@
-using NaughtyAttributes;
-using NUnit.Framework;
+using Minesweeper;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -16,13 +15,12 @@ public class GridView : MonoBehaviour
     private int _gridSize = 10;
 
     [Inject]
-    public void Initialize(LevelConfig levelConfig)
+    private void Initialize(LevelConfig levelConfig)
     {
         _gridSize = levelConfig.GridSize;
         _gameAreaSize = _gameArea.sizeDelta.x;
     }
 
-    [Button]
     public void DrawGrid()
     {
         if (_gridSize < _minSize)
@@ -42,7 +40,8 @@ public class GridView : MonoBehaviour
         {
             for (int i = 0; i < _gridSize; i++)
             {
-                Instantiate(_cellPrefab, _gameArea);
+                var cell = Instantiate(_cellPrefab, _gameArea);
+                cell.GetComponent<CellMono>().SetIndex(i, j);
             }
         }
     }

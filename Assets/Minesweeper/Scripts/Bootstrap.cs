@@ -1,17 +1,27 @@
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
+using Zenject;
 
-namespace Minesweeper {
+namespace Minesweeper
+{
     public class Bootstrap : MonoBehaviour
     {
-        private int size = 10;
-        private int mineCount = 10;
+        [SerializeField] private GridView _gridView;
+
+        private LevelConfig _levelConfig;
 
         private void Awake()
         {
-            bool[,] mines = MineGenerator.Generate(size, mineCount);
+            _gridView.DrawGrid();
 
-            
+            // click on mines(i, j)
+
+            bool[,] mines = MineGenerator.Generate(_levelConfig.GridSize, _levelConfig.MinesCount);
+        }
+
+        [Inject]
+        private void Initialize(LevelConfig levelConfig)
+        {
+            _levelConfig = levelConfig;
         }
     }
 }
