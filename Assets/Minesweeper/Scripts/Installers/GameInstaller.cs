@@ -15,7 +15,7 @@ namespace Minesweeper
                 .AsSingle()
                 .NonLazy();
 
-            Container.BindInterfacesTo<GameController>()
+            Container.BindInterfacesAndSelfTo<GameController>()
                 .FromNew()
                 .AsSingle()
                 .WithArguments<int, int>(_levelConfig.GridSize, _levelConfig.MinesCount)

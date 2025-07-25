@@ -10,8 +10,8 @@ namespace Minesweeper
     {
         public static Action<CellMono> OnCellClicked;
 
-        [SerializeField] public Image OverImage { get; private set; } = null;
-        [SerializeField] public TMP_Text NCountText { get; private set; } = null;
+        [SerializeField] private Image OverImage = null;
+        [SerializeField] private TMP_Text NCountText = null;
 
         public int I {  get; private set; }
         public int J { get; private set; }
