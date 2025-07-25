@@ -3,45 +3,48 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class GridView : MonoBehaviour
+namespace Minesweeper
 {
-    [SerializeField] private GameObject _cellPrefab = null;
-    [SerializeField] private RectTransform _gameArea = null;
-    [SerializeField] private GridLayoutGroup _gridLayoutGroup = null;
-
-    private int _minSize = 10;
-    private int _maxSize = 100;
-    private float _gameAreaSize = 900.0f;
-    private int _gridSize = 10;
-
-    [Inject]
-    private void Initialize(LevelConfig levelConfig)
+    public class GridView : MonoBehaviour
     {
-        _gridSize = levelConfig.GridSize;
-        _gameAreaSize = _gameArea.sizeDelta.x;
-    }
+        [SerializeField] private GameObject _cellPrefab = null;
+        [SerializeField] private RectTransform _gameArea = null;
+        [SerializeField] private GridLayoutGroup _gridLayoutGroup = null;
 
-    public void DrawGrid()
-    {
-        if (_gridSize < _minSize)
+        private int _minSize = 10;
+        private int _maxSize = 100;
+        private float _gameAreaSize = 900.0f;
+        private int _gridSize = 10;
+
+        [Inject]
+        private void Initialize(LevelConfig levelConfig)
         {
-            throw new System.ArgumentOutOfRangeException("GridSize can not be less than " + _minSize);
-        }
-        else if (_gridSize > _maxSize)
-        {
-            throw new System.ArgumentOutOfRangeException("GridSize can not be more than " + _maxSize);
+            _gridSize = levelConfig.GridSize;
+            _gameAreaSize = _gameArea.sizeDelta.x;
         }
 
-        float cellSize = _gameAreaSize / _gridSize;
-
-        _gridLayoutGroup.cellSize = new Vector2(cellSize, cellSize);
-
-        for (int j = 0; j < _gridSize; j++)
+        public void DrawGrid()
         {
-            for (int i = 0; i < _gridSize; i++)
+            if (_gridSize < _minSize)
             {
-                var cell = Instantiate(_cellPrefab, _gameArea);
-                cell.GetComponent<CellMono>().SetIndex(i, j);
+                throw new System.ArgumentOutOfRangeException("GridSize can not be less than " + _minSize);
+            }
+            else if (_gridSize > _maxSize)
+            {
+                throw new System.ArgumentOutOfRangeException("GridSize can not be more than " + _maxSize);
+            }
+
+            float cellSize = _gameAreaSize / _gridSize;
+
+            _gridLayoutGroup.cellSize = new Vector2(cellSize, cellSize);
+
+            for (int j = 0; j < _gridSize; j++)
+            {
+                for (int i = 0; i < _gridSize; i++)
+                {
+                    var cell = Instantiate(_cellPrefab, _gameArea);
+                    cell.GetComponent<CellMono>().SetIndex(i, j);
+                }
             }
         }
     }

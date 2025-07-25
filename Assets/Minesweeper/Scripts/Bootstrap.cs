@@ -1,5 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Text;
+using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 namespace Minesweeper
 {
@@ -7,21 +11,9 @@ namespace Minesweeper
     {
         [SerializeField] private GridView _gridView;
 
-        private LevelConfig _levelConfig;
-
         private void Awake()
         {
             _gridView.DrawGrid();
-
-            // click on mines(i, j)
-
-            bool[,] mines = MineGenerator.Generate(_levelConfig.GridSize, _levelConfig.MinesCount);
-        }
-
-        [Inject]
-        private void Initialize(LevelConfig levelConfig)
-        {
-            _levelConfig = levelConfig;
         }
     }
 }
