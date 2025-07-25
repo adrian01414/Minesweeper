@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using Zenject;
 
@@ -21,12 +23,21 @@ namespace Minesweeper
 
             bool[,] mines = MineGenerator.Generate(_gridSize, _minesCount);
 
-            int minesAroundCellCount;
             for (int j = 0; j < _gridSize; j++)
             {
                 for (int i = 0; i < _gridSize; i++)
                 {
-                    minesAroundCellCount = 0;
+                    bool isMine = mines[i, j];
+                    _cells[i, j] = new Cell(isMine);
+                }
+            }
+
+            List<Cell> neighbors;
+            for (int j = 0; j < _gridSize; j++)
+            {
+                for (int i = 0; i < _gridSize; i++)
+                {
+                    neighbors = new List<Cell>();
                     for (int dj = -1; dj <= 1; dj++)
                     {
                         for (int di = -1; di <= 1; di++)
@@ -39,12 +50,11 @@ namespace Minesweeper
 
                             if (ni >= 0 && ni < _gridSize && nj >= 0 && nj < _gridSize)
                             {
-                                if (mines[ni, nj] && !mines[i, j]) minesAroundCellCount++;
+                                neighbors.Add(_cells[ni, nj]);
                             }
                         }
                     }
-                    bool isMine = mines[i, j];
-                    _cells[i, j] = new Cell(isMine, minesAroundCellCount);
+                    _cells[i, j].SetNeighbors(neighbors);
                 }
             }
         }
