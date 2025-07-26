@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e997fc17b03b0749bbd385eb40a6e9f, type: 3}
+  m_Name: Purple
+  m_EditorClassIdentifier: 
+  <DefaultCellImage>k__BackingField: {fileID: 21300000, guid: 291299f62e0bbc14ba5d8e225e190165, type: 3}
+  <DisabledCellImage>k__BackingField: {fileID: 348919893517365344, guid: ec0f3f48e3eecb046985f9d98d1a7c48, type: 3}
+  <SelectedCellImage>k__BackingField: {fileID: 21300000, guid: 05ce169453b87a04dbe77e0bdcd2b467, type: 3}
+  <PressedCellImage>k__BackingField: {fileID: 21300000, guid: b6b5597ff583c9f4fafa76d04afa3b9c, type: 3}
+  <BombImage>k__BackingField: {fileID: 21300000, guid: f3798aa76c2dabc46b27c68e5e2afe82, type: 3}
+  <FlagImage>k__BackingField: {fileID: 21300000, guid: 7858798c0704ca240b07e73008de1cb8, type: 3}

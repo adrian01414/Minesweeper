@@ -4,7 +4,6 @@ namespace Minesweeper {
 
     public class Cell
     {
-        public bool IsOpened { get; private set; } = false;
         public bool IsMine { get; private set; } = false;
 
         private List<Cell> _neighbors = null;

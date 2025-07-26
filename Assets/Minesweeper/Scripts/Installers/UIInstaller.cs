@@ -1,16 +1,19 @@
-using Minesweeper;
 using UnityEngine;
 using Zenject;
 
-public class UIInstaller : MonoInstaller
+namespace Minesweeper
 {
-    [SerializeField] private GridView _gridView = null;
-
-    public override void InstallBindings()
+    public class UIInstaller : MonoInstaller
     {
-        Container.BindInterfacesAndSelfTo<GridPresenter>()
-                .AsCached()
-                .WithArguments(_gridView)
-                .NonLazy();
+        [SerializeField] private GridView _gridView = null;
+
+        public override void InstallBindings()
+        {
+            Container.BindInterfacesAndSelfTo<GridPresenter>()
+                    .FromNew()
+                    .AsSingle()
+                    .WithArguments(_gridView)
+                    .NonLazy();
+        }
     }
 }

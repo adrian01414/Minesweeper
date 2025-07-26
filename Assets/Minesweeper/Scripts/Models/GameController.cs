@@ -1,12 +1,14 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
-using UnityEngine;
 using Zenject;
 
 namespace Minesweeper
 {
     public class GameController : IInitializable
     {
+        public event Action<int, int, int, bool> OnCellOpened = null;
+
         private Cell[,] _cells = null;
         private int _gridSize = 10;
         private int _minesCount = 10;
@@ -57,6 +59,28 @@ namespace Minesweeper
                     _cells[i, j].SetNeighbors(neighbors);
                 }
             }
+
+            StringBuilder res = new StringBuilder();
+            for (int j = 0; j < _gridSize; j++)
+            {
+                for (int i = 0; i < _gridSize; i++)
+                {
+                    if(mines[i, j])
+                    {
+                        res.Append("1 ");
+                    } else
+                    {
+                        res.Append("0 ");
+                    }
+                }
+                res.Append('\n');
+            }
+            UnityEngine.Debug.Log(res.ToString());
+        }
+
+        public void CellClick(int i, int j)
+        {
+            OnCellOpened?.Invoke(i, j, _cells[i, j].GetMinesAroundCount(), _cells[i, j].IsMine);
         }
     }
 }
