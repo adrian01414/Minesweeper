@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Theme", menuName = "Scriptable Objects/Theme")]
-public class Theme : ScriptableObject
+[CreateAssetMenu(fileName = "Sprites", menuName = "Scriptable Objects/Sprites")]
+public class Sprites : ScriptableObject
 {
     [field: SerializeField] public Sprite DefaultCellImage { get; private set; } = null;
     [field: SerializeField] public Sprite DisabledCellImage { get; private set; } = null;

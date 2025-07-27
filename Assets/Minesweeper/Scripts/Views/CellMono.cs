@@ -1,5 +1,4 @@
 ﻿using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,7 +13,7 @@ namespace Minesweeper
         public int I { get; private set; } = 0;
         public int J { get; private set; } = 0;
 
-        public bool IsFlag = false;
+        [HideInInspector] public bool IsFlag = false;
 
         private bool _isOpened = false;
         private bool _mouseOnCell = false;

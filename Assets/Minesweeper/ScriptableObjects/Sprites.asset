@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e997fc17b03b0749bbd385eb40a6e9f, type: 3}
-  m_Name: Purple
+  m_Script: {fileID: 11500000, guid: 22adc00bee813284cb50f1d498befebb, type: 3}
+  m_Name: Sprites
   m_EditorClassIdentifier: 
   <DefaultCellImage>k__BackingField: {fileID: 21300000, guid: 291299f62e0bbc14ba5d8e225e190165, type: 3}
   <DisabledCellImage>k__BackingField: {fileID: 348919893517365344, guid: ec0f3f48e3eecb046985f9d98d1a7c48, type: 3}

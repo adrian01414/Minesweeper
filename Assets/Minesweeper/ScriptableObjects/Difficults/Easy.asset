@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: 
   <GridSize>k__BackingField: 10
+  <MinesCount>k__BackingField: 5

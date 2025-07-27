@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridView: {fileID: 473103354}
+  _sprites: {fileID: 11400000, guid: 6fe81d7bbe16a264f92dc1d0063759ec, type: 2}
 --- !u!1 &1979201197
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +640,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelConfig: {fileID: 11400000, guid: bf3410d03ecca8b448915e946cede480, type: 2}
-  _theme: {fileID: 11400000, guid: 567c9804fbc7eb847bd4562a76f57427, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

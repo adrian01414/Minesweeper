@@ -6,6 +6,8 @@ namespace Minesweeper {
     {
         public bool IsMine { get; private set; } = false;
 
+        public bool IsOpened = false;
+
         private List<Cell> _neighbors = null;
         public IReadOnlyList<Cell> Neighbors { get => _neighbors; }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Zenject;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace Minesweeper
 {
@@ -59,28 +60,32 @@ namespace Minesweeper
                     _cells[i, j].SetNeighbors(neighbors);
                 }
             }
-
-            StringBuilder res = new StringBuilder();
-            for (int j = 0; j < _gridSize; j++)
-            {
-                for (int i = 0; i < _gridSize; i++)
-                {
-                    if(mines[i, j])
-                    {
-                        res.Append("1 ");
-                    } else
-                    {
-                        res.Append("0 ");
-                    }
-                }
-                res.Append('\n');
-            }
-            UnityEngine.Debug.Log(res.ToString());
         }
 
         public void CellClick(int i, int j)
         {
+            _cells[i, j].IsOpened = true;
             OnCellOpened?.Invoke(i, j, _cells[i, j].GetMinesAroundCount(), _cells[i, j].IsMine);
+            if (_cells[i, j].GetMinesAroundCount() == 0)
+            {
+                for (int dj = -1; dj <= 1; dj++)
+                {
+                    for (int di = -1; di <= 1; di++)
+                    {
+                        if (di == 0 && dj == 0)
+                            continue;
+
+                        int ni = i + di;
+                        int nj = j + dj;
+
+                        if (ni >= 0 && ni < _gridSize && nj >= 0 && nj < _gridSize)
+                        {
+                            if (!_cells[ni, nj].IsOpened)
+                                CellClick(ni, nj);
+                        }
+                    }
+                }
+            }
         }
     }
 }

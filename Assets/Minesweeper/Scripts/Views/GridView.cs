@@ -16,7 +16,7 @@ namespace Minesweeper
         [SerializeField] private RectTransform _gameArea = null;
         [SerializeField] private GridLayoutGroup _gridLayoutGroup = null;
 
-        private Theme _theme;
+        private Sprites _theme;
         private CellMono[,] _cells = null;
 
         private int _minSize = 10;
@@ -25,12 +25,14 @@ namespace Minesweeper
         private int _gridSize = 10;
 
         [Inject]
-        private void Initialize(LevelConfig levelConfig, Theme theme)
+        private void Initialize(LevelConfig levelConfig, Sprites theme)
         {
             _gridSize = levelConfig.GridSize;
             _gameAreaSize = _gameArea.sizeDelta.x;
             _cells = new CellMono[levelConfig.GridSize, levelConfig.GridSize];
             _theme = theme;
+
+            DrawGrid();
         }
 
         public void DrawGrid()

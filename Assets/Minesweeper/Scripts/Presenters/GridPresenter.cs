@@ -17,7 +17,6 @@ namespace Minesweeper
 
         public void Initialize()
         {
-            _gridView.DrawGrid();
             _gridView.OnCellClick += CellClick;
             _gameController.OnCellOpened += CellOpen;
         }
@@ -25,6 +24,14 @@ namespace Minesweeper
         private void CellOpen(int i, int j, int minesAroundCount, bool isMine)
         {
             _gridView.OpenCell(i, j, minesAroundCount, isMine);
+            if (isMine)
+            {
+                //open all mines
+                //show lose window
+            } else
+            {
+                // check win
+            }
         }
 
         private void CellClick(int i, int j)
